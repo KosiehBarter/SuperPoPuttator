@@ -27,11 +27,21 @@ class GUIObject(tkinter.Frame):
         tkinter.Radiobutton(self.root_obj, text = "Minty", variable = self.variable, value = "Minty").grid(column = 0, row = 7, sticky = tkinter.W)
         tkinter.Radiobutton(self.root_obj, text = "RLogin", variable = self.variable, value = "RLogin").grid(column = 1, row = 7, sticky = tkinter.W)
 
-        tkinter.Entry(self.root_obj).grid(column = 1, row = 0, sticky = tkinter.W+tkinter.E)
-        tkinter.Entry(self.root_obj).grid(column = 1, row = 1, sticky = tkinter.W+tkinter.E)
-        tkinter.Entry(self.root_obj).grid(column = 1, row = 2, sticky = tkinter.W+tkinter.E)
-        tkinter.Entry(self.root_obj).grid(column = 1, row = 3, sticky = tkinter.W+tkinter.E)
-        tkinter.Text(self.root_obj).grid(columnspan = 2, rowspan = 3, sticky = tkinter.W+tkinter.E+tkinter.S+tkinter.N)
+        # Entry fields definition
+        self.xml_file = tkinter.Entry(self.root_obj)
+        self.xml_file.grid(column = 1, row = 0, sticky = tkinter.W+tkinter.E)
+        #
+        self.user_name = tkinter.Entry(self.root_obj)
+        self.user_name.grid(column = 1, row = 1, sticky = tkinter.W+tkinter.E)
+        #
+        self.port_num = tkinter.Entry(self.root_obj)
+        self.port_num.grid(column = 1, row = 2, sticky = tkinter.W+tkinter.E)
+        #
+        self.domain = tkinter.Entry(self.root_obj)
+        self.domain.grid(column = 1, row = 3, sticky = tkinter.W+tkinter.E)
+        #
+        self.servers = tkinter.Text(self.root_obj)
+        self.servers.grid(columnspan = 2, rowspan = 3, sticky = tkinter.W+tkinter.E+tkinter.S+tkinter.N)
 
         process_btn = tkinter.Button(self.root_obj, text = "Process", command = self.process_machines).grid(columnspan = 3, sticky = tkinter.W+tkinter.E)
         exit_btn = tkinter.Button(self.root_obj, text = "Exit program", command = self.exit_prog).grid(columnspan = 3, sticky = tkinter.W+tkinter.E)
@@ -41,7 +51,7 @@ class GUIObject(tkinter.Frame):
         sys.exit(0)
 
     def process_machines(self):
-        pass
+        print (self.variable)
 
     def load_xml(self):
         pass
