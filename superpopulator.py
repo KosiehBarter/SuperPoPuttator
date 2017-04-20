@@ -7,60 +7,11 @@ class GUIObject(tkinter.Frame):
         docstring for GUIObject.
     """
     def __init__(self):
-        super(GUIObject, self).__init__()
+        #super(GUIObject, self).__init__()
         self.root_obj = tkinter.Tk()
         tkinter.Frame.__init__(self, self.root_obj)
 
         self.root_obj.title("SuperPoPuttator")
-
-        # Frame definition
-        main_label = tkinter.Label(self.root_obj, text = "Server names")
-        main_label.grid(column = 0, row = 0)
-        main_area = tkinter.Frame(self.root_obj)
-        main_area.grid(column=0, row=1)
-
-        main_area_scrollbar = tkinter.Scrollbar(main_area)
-        main_area_scrollbar.pack(side = tkinter.RIGHT, fill = tkinter.Y)
-
-        left_sessions = tkinter.Text(main_area, wrap = tkinter.WORD, yscrollcommand=main_area_scrollbar.set, height = 20)
-        left_sessions.pack()
-
-        # Domain definition
-        domain_label = tkinter.Label(self.root_obj, text = "Domain")
-        domain_label.grid(column = 0, row = 2)
-        domain_area = tkinter.Frame(self.root_obj)
-        domain_area.grid(column = 0, row = 3)
-
-        domain_session = tkinter.Text(domain_area, height = 1)
-        domain_session.pack()
-
-        # Override XML definition
-        xml_label = tkinter.Label(self.root_obj, text = "Sessions.xml Override")
-        xml_label.grid(column = 0, row = 4)
-        xml_area = tkinter.Frame(self.root_obj)
-        xml_area.grid(column = 0, row = 5)
-
-        xml_session = tkinter.Text(xml_area, height = 1)
-        xml_session.pack()
-
-        # Folder definition
-        folder_label = tkinter.Label(self.root_obj, text = "Folder name for organization")
-        folder_label.grid(column = 0, row = 6)
-        folder_area = tkinter.Frame(self.root_obj)
-        folder_area.grid(column = 0, row = 7)
-
-        folder_session = tkinter.Text(folder_area, height = 1)
-        folder_session.pack()
-
-        # Button Definitions
-        process_btn = tkinter.Button(self.root_obj, text = "Process", command = self.process)
-        process_btn.grid(column = 0, row = 8)
-
-
-        self.root_obj.mainloop()
-
-    def process(self):
-        pass
 
 class LogicObject(object):
     """
@@ -137,8 +88,7 @@ class LogicObject(object):
 ################################################################################
 def main():
     guiobject = GUIObject()
-
-
+    guiobject.root_obj.mainloop()
 
 if __name__ == '__main__':
     main()
