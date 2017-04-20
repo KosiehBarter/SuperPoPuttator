@@ -1,6 +1,7 @@
 import tkinter
 import xml.etree.ElementTree as ET
 import os
+import sys
 
 class GUIObject(tkinter.Frame):
     """
@@ -9,9 +10,41 @@ class GUIObject(tkinter.Frame):
     def __init__(self):
         #super(GUIObject, self).__init__()
         self.root_obj = tkinter.Tk()
+        self.variable = tkinter.IntVar()
         tkinter.Frame.__init__(self, self.root_obj)
 
+        tkinter.Label(self.root_obj, text = 'XML File path Override').grid(column = 0, row = 0, padx = 10)
+        tkinter.Label(self.root_obj, text = 'User name').grid(column = 0, row = 1, padx = 10)
+        tkinter.Label(self.root_obj, text = 'Port').grid(column = 0, row = 2, padx = 10)
+        tkinter.Label(self.root_obj, text = 'Domain name / Address - Only W/ hostnames').grid(column = 0, row = 3)
+        tkinter.Label(self.root_obj, text = 'Server / Host names').grid(columnspan = 2, row = 8, padx = 10)
+        tkinter.Label(self.root_obj, text = 'Protocol').grid(columnspan = 2, row = 4, padx = 20)
+
+        tkinter.Radiobutton(self.root_obj, text = "SSH", variable = self.variable, value = "SSH").grid(column = 0, row = 5, sticky = tkinter.W)
+        tkinter.Radiobutton(self.root_obj, text = "Telnet", variable = self.variable, value = "Telnet").grid(column = 1, row = 5, sticky = tkinter.W)
+        tkinter.Radiobutton(self.root_obj, text = "Serial", variable = self.variable, value = "Serial").grid(column = 0, row = 6, sticky = tkinter.W)
+        tkinter.Radiobutton(self.root_obj, text = "Cygterm", variable = self.variable, value = "Cygterm").grid(column = 1, row = 6, sticky = tkinter.W)
+        tkinter.Radiobutton(self.root_obj, text = "Minty", variable = self.variable, value = "Minty").grid(column = 0, row = 7, sticky = tkinter.W)
+        tkinter.Radiobutton(self.root_obj, text = "RLogin", variable = self.variable, value = "RLogin").grid(column = 1, row = 7, sticky = tkinter.W)
+
+        tkinter.Entry(self.root_obj).grid(column = 1, row = 0, sticky = tkinter.W+tkinter.E)
+        tkinter.Entry(self.root_obj).grid(column = 1, row = 1, sticky = tkinter.W+tkinter.E)
+        tkinter.Entry(self.root_obj).grid(column = 1, row = 2, sticky = tkinter.W+tkinter.E)
+        tkinter.Entry(self.root_obj).grid(column = 1, row = 3, sticky = tkinter.W+tkinter.E)
+        tkinter.Text(self.root_obj).grid(columnspan = 2, rowspan = 3, sticky = tkinter.W+tkinter.E+tkinter.S+tkinter.N)
+
+        process_btn = tkinter.Button(self.root_obj, text = "Process", command = self.process_machines).grid(columnspan = 3, sticky = tkinter.W+tkinter.E)
+        exit_btn = tkinter.Button(self.root_obj, text = "Exit program", command = self.exit_prog).grid(columnspan = 3, sticky = tkinter.W+tkinter.E)
         self.root_obj.title("SuperPoPuttator")
+
+    def exit_prog(self):
+        sys.exit(0)
+
+    def process_machines(self):
+        pass
+
+    def load_xml(self):
+        pass
 
 class LogicObject(object):
     """
